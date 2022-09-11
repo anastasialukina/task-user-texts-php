@@ -2,12 +2,12 @@
 require 'vendor/autoload.php';
 
 use App\Input;
-use App\Output;
+use App\Commands;
 
 $inputUsers = new Input(';');
 $users = $inputUsers->inputPeopleFile();
 print_r($users);
 
-$output = new Output;
-$texts = $output->getTextFiles();
+$commands = new Commands;
+$texts = $commands->countAverageLineCount($users);
 print_r($texts);
