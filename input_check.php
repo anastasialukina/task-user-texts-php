@@ -10,4 +10,11 @@ print_r($users);
 
 $commands = new Commands;
 $texts = $commands->countAverageLineCount($users);
-print_r($texts);
+//print_r($texts);
+
+$replaces = $commands->replaceDates();
+$replacesWithNames = [];
+foreach ($replaces as $key => $value) {
+    $replacesWithNames[$users[$key]] = $value;
+}
+print_r($replacesWithNames);
