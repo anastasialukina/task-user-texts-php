@@ -28,7 +28,7 @@ class Commands
         return $arrayOfFinalData;
     }
 
-    public function replaceDates(): array
+    public function replaceDates($users): array
     {
         $textData = $this->getTextFiles();
         $arrayOfFinalData = [];
@@ -60,9 +60,8 @@ class Commands
 
                 file_put_contents($fileName, $newText);
             }
-            $arrayOfFinalData[$keyGroup] = $countOfDates;
+            $arrayOfFinalData[$users[$keyGroup]] = $countOfDates;
         }
-
         return $arrayOfFinalData;
     }
 

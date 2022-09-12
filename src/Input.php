@@ -14,6 +14,9 @@ class Input
         $this->delimiter = $delimiter;
     }
 
+    /**
+     * @throws \PhpOffice\PhpSpreadsheet\Reader\Exception
+     */
     public function inputPeopleFile(): array
     {
         $inputFileType = 'Csv';
@@ -27,6 +30,9 @@ class Input
 
         $users = [];
         foreach ($sheetData as $datum) {
+            if (empty($datum['A']) || empty($datum['B'])) {
+                throw new \Exception('Unexpected format of file people.csv. Try to check a delimiter matching.');
+            }
             $users[$datum['A']] = $datum['B'];
         }
         return $users;
